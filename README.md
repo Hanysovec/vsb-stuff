@@ -1,0 +1,3 @@
+# vsb-stuff
+Projects and so on...
+Project to calculate the global clustering coefficient from input graph.
