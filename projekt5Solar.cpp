@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
 
-    string file_name = "Graf3.txt";
+    string file_name = "Graf1.txt";
     // Read graph from file
     chrono::steady_clock::time_point begin = chrono::steady_clock::now();
     cout << "Loading file " << file_name << "..." << endl;
