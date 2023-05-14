@@ -1,14 +1,12 @@
 #include "Graph.h"
 Graph::Graph(int v) : V(v), matrix(v) {}
 
-// Add edge to the graph
+
 void Graph::add_edge(int u, int v) {
     matrix[u].push_back(v);
     matrix[v].push_back(u);
 }
 
-
-// Get largest component and its size
 int Graph::largest_component() {
     if (!sorted) {
         sort_matrix();
@@ -35,9 +33,6 @@ void Graph::sort_matrix() {
     sorted = true;
 }
 
-
-
-    // Breadth-first search to get component size
 int Graph::bfs(int src, vector<bool>& visited, vector<int>& component) {
     int size = 0;
     queue<int> q;
@@ -70,16 +65,13 @@ long Graph::numberOfVertex() {
     return count;
 }
 
-// Compute global clustering coefficient of the largest component
 double Graph::clustering_coefficient() {
     long long triplets = 0;
     long long triangles = 0;
     if (component.empty()) {
         largest_component();
-        cout << "hledam komponentu" << endl;
     }
 
-    // Compute number of triplets and triangles in largest component
     for (int u : component) {
         vector<int> neighbors = matrix[u];
         long long degree = neighbors.size();
@@ -95,8 +87,6 @@ double Graph::clustering_coefficient() {
         }
         triplets += degree * (degree - 1) / 2;
     }
-
-    // Compute global clustering coefficient
     double c = 0.0;
     if (triplets > 0) {
         c = (double)(triangles) / (double)(triplets);

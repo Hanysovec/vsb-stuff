@@ -13,7 +13,7 @@ using namespace std;
 int main() {
 
     string file_name = "Graf1.txt";
-    // Read graph from file
+    // Reads file and finds its number of vertices
     chrono::steady_clock::time_point begin = chrono::steady_clock::now();
     cout << "Loading file " << file_name << "..." << endl;
     ifstream file(file_name);
@@ -21,6 +21,7 @@ int main() {
     while (file >> u >> v) {
         max_vertex = max(max_vertex, max(u, v));
     }
+    // Initialize the graph
     Graph G(max_vertex + 1);
     file.clear();
     file.seekg(0);
@@ -41,7 +42,7 @@ int main() {
     cout << "Time to find largest component: " << chrono::duration_cast<chrono::milliseconds>(end - begin).count() << " milliseconds." << endl;
 
 
-    // Compute global clustering coefficient
+    // Calculate global clustering coefficient
     cout << "Calculating clustering coefficient..." << endl;
     begin = chrono::steady_clock::now();
     double C = G.clustering_coefficient();
